@@ -1,0 +1,134 @@
+<%- include("header")%>  <%- include("nav")%>
+
+<!-------->
+<% if(cards.length===0){ %>
+  <h3 class="text-danger text-center mt-5 fw-bold">No gallery task avilable.</h3>
+<%}%>
+
+<!-- card -->
+<div class="main">
+  <%cards.forEach((card)=>{ %>
+
+  <div class="card">
+    <!--- image --->
+    <img class="cardimage" src="/upload/<%= card.Image%>" alt="Network Problem">
+
+    <!--- delete --->
+    <!-- <a href="/delete/<%= card.id%>"><img class="cross" src="https://img.icons8.com/color/48/null/close-window.png"/></a> -->
+
+    <!--- cardnavbar --->
+    <div class="navbar2">
+      <div class="one fw-bold ">
+          <a class="text-decoration-none" href="/update/<%= card.id%>"><h4 class="new"><%=card.title.substr(0,17)%></h4></a>
+          <a class="text-decoration-none" href="/update/<%= card.id%>"><p class="new "><%=card.Author.substr(0,17)%></p></a>
+      </div>
+
+      <!--- image download --->
+      <div class="two">
+        <a href="/upload/<%= card.Image%>" download="/upload/<%= card.Image%>">
+          <img src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/32/null/external-download-ui-essentials-kmg-design-glyph-kmg-design.png"/>
+        </a> 
+      </div>
+    </div>
+  </div>
+  <%})%>
+</div>
+
+<%- include("footer")%>
+
+
+
+
+
+
+
+
+
+
+
+<!------------->
+<style>
+  .main {
+    width: 100vw;
+    min-height: 88.2vh;
+    padding: 5vw 0 0 8vw;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+     background-color:#EDC48D;
+
+  }
+  .cross{
+    position: absolute;
+    top: 0%;
+    width: 2.5vw;
+    height: 5vh;
+  }
+  
+
+  .card {
+    width: 20vw;
+    height: 62vh;
+    /* background-color: rgb(117, 171, 179); */
+    display: flex;
+    margin-top: 1vw;
+    margin-right: 1vw;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    /* box-shadow: 0.1vw 0.1vw 1vw chartreuse; */
+    
+  }
+  .card:hover{
+    box-shadow: 0.2vw 0.2vw 1.1vw black;
+    transition: 0.3s;
+  }
+
+  .card>.cardimage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+  
+  }
+  .navbar2 {
+    width: 100%;
+    height: 10vh;
+    position: absolute;
+    bottom: 0%;
+    color: white;
+    display: flex; 
+    
+    padding: 0 1vw 0 1vw;
+    border-bottom-left-radius: 0.15vw;
+    border-bottom-right-radius: 0.15vw;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: rgb(22, 224, 214); */
+    background-color: thistle;
+    opacity: 80%;
+    filter: blur(10px);
+    -webkit-filter: blur(0.2px);
+    
+  }
+
+  .new {
+    color: black;
+    font-size: 1.2vw;
+    font-weight: 700;
+    height: 2vh;
+    font-family: gilroy;
+  }
+  .two{
+    color: brown;
+  }
+  div{
+    overflow-x: hidden;
+  }
+</style>
+
+
+

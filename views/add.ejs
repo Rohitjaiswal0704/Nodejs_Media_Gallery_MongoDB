@@ -1,0 +1,58 @@
+<%- include("header")%> <%- include("nav")%>
+<div class="addimage">
+  <form class="form" action="/add" method="post" enctype="multipart/form-data" >
+    <h1 class="h1">Add image <span>+</span></h1>
+    <input class="one" type="text" name="title" placeholder="Card title" />
+    <input class="one" type="text" name="Author" placeholder="Author Name" />
+    <input class="one" type="file" name="Image" placeholder="No file chosen" />
+    <button>Add to gallery</button>
+  </form>
+</div>
+<%- include("footer")%>
+
+
+
+
+
+
+
+
+<style>
+  .addimage {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .form {
+    display: flex;
+    margin-top: 7vw;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1vw;
+  }
+  .one {
+    width: 25vw;
+    height: 7vh;
+    font-size: 1.3vw;
+    font-family: gilroy;
+  }
+  button {
+    border: none;
+    font-size: 1.2vw;
+    font-family: gilroy;
+    width: 13vw;
+    height: 3vw;
+    background-color: rgb(22, 165, 170);
+  }
+  .h1 {
+    font-size: 2.5vw;
+    font-family: gilroy;
+    color: rgb(22, 165, 170);
+  }
+  .h1>span{
+    color: rgb(177, 22, 22);
+  }
+</style>

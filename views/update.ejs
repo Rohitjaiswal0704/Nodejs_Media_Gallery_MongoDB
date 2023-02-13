@@ -1,0 +1,177 @@
+<%- include("header")%>
+<div class="main">
+  <div style="position: absolute; top: 5%; left: 5%; text-decoration: none; font-family: gilroy; font-size: 1.5vw;">
+    
+    <a href="/" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">
+      <img src="https://img.icons8.com/ios-glyphs/20/null/chevron-left.png"/>Back
+    </a>
+
+  </div>
+
+  <!------------------->
+  <div class="card">
+    <div class="left">
+      <img
+        class="left_image"
+        src="/upload/<%= card.Image%>"
+        alt="Network Problem"
+        style="border-radius: 0.5vw"
+      />
+    </div>
+
+    <!------------------>
+    <div class="right">
+      <form
+        class="form"
+        action="/update/<%= card.id%>"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <h1 class="h1">Update Image <span>+</span></h1>
+        <input
+          class="one five"
+          type="text"
+          name="title"
+          placeholder="Card title"
+          value="<%= card.title%>"
+        />
+        <input
+          class="one five"
+          type="text"
+          name="Author"
+          placeholder="Author Name"
+          value="<%= card.Author%>"
+        />
+        <input type="hidden" value="<%= card.Image%>" name="oldgallery" />
+        <div>
+          <input
+            class="one uploadfile"
+            type="file"
+            name="gallery"
+            placeholder="No file chosen"
+          />
+
+          <img
+            class="preview"
+            src="/upload/<%= card.Image%>"
+            height="80"
+            width="110"
+            alt=""
+            style="border-radius: 0.2vw"
+          />
+        </div>
+
+        <div class="all_btn">
+          <button style="color: white" class="btn1">update gallery</button>
+
+          <a href="/delete/<%= card.id%>">
+            <button style="color: white" class="btn2">delete gallery</button>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  const uploadfile = document.querySelector(".uploadfile");
+  const preview = document.querySelector(".preview");
+  uploadfile.addEventListener("change", function (e) {
+    preview.src = URL.createObjectURL(e.target.files[0]);
+  });
+</script>
+<%- include("footer")%>
+
+<style>
+  .left_image {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+  }
+  .main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #eec58e;
+  }
+  .card {
+    width: 60vw;
+    height: 60vh;
+    padding-right: 2vw;
+    /* border: 0.15vw solid rgb(161, 36, 36); */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0.2vw 0.2vw 1vw black;
+    background-color: #ede98e;
+  }
+  .left {
+    width: 27vw;
+    height: 60vh;
+    padding: 1vw;
+    /* background-color: rgb(255, 251, 0); */
+  }
+  .right {
+    width: 30vw;
+    height: 50vh;
+    padding: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .form {
+    display: flex;
+    /* margin-left: 10vw; */
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1vw;
+  }
+  .one {
+    width: 25vw;
+    height: 7vh;
+    font-size: 1.3vw;
+    font-family: gilroy;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+  .five{
+    border-bottom: 0.1vw solid black;
+  }
+  .all_btn {
+    width: 25vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .btn1 {
+    border: none;
+    font-size: 1.2vw;
+    font-family: gilroy;
+    width: 11vw;
+    height: 3vw;
+    background-color: rgb(22, 165, 170);
+  }
+  .btn2 {
+    border: none;
+    font-size: 1.2vw;
+    font-family: gilroy;
+    width: 11vw;
+    height: 3vw;
+    background-color: rgb(22, 165, 170);
+  }
+  .h1 {
+    font-size: 2.3vw;
+    font-family: gilroy;
+    color: rgb(22, 165, 170);
+  }
+  .h1 > span {
+    color: rgb(177, 22, 22);
+  }
+</style>
